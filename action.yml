@@ -9,10 +9,10 @@ runs:
     - run: pwd
       shell: bash
     - run: |
-        cat "name: 'Included workflow'" > "$GITHUB_WORKSPACE/included/action.yml"
-        cat "runs:" >> "$GITHUB_WORKSPACE/included/action.yml"
-        cat "  using: \"composite\"" >> "$GITHUB_WORKSPACE/included/action.yml"
-        cat "  steps:" >> "$GITHUB_WORKSPACE/included/action.yml"
+        echo "name: 'Included workflow'" > "$GITHUB_WORKSPACE/included/action.yml"
+        echo "runs:" >> "$GITHUB_WORKSPACE/included/action.yml"
+        echo "  using: \"composite\"" >> "$GITHUB_WORKSPACE/included/action.yml"
+        echo "  steps:" >> "$GITHUB_WORKSPACE/included/action.yml"
       shell: bash
     - run: echo $GITHUB_WORKSPACE
       shell: bash
