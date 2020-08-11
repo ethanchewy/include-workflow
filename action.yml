@@ -3,6 +3,10 @@ description: 'Include workflow snippets'
 inputs:
   workflow-steps:
     required: true
+outputs:
+  # temporary until this supports `uses
+  workflow-uses:
+    description: 'The temporary workflow to use`
 runs:
   using: "composite"
   steps: 
@@ -16,4 +20,6 @@ runs:
       shell: bash
     - run: cat ${{ inputs.workflow-steps }} >> $GITHUB_WORKSPACE/included/action.yml
       shell: bash  
-    - uses: $GITHUB_WORKSPACE/included
+    - run: echo "::set-output name=workflow-uses::$GITHUB_WORKSPACE/included/action.yml"
+    # not yet supported :(
+    # - uses: $GITHUB_WORKSPACE/included
