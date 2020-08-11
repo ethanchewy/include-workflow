@@ -3,15 +3,11 @@ description: 'Include workflow snippets'
 inputs:
   workflow-steps:
     required: true
-outputs:
-  # temporary until this supports `uses
-  workflow-uses:
-    description: 'The temporary workflow to use'
 runs:
   using: "composite"
   steps: 
-    # - run: 'cat ./template.yml > "$GITHUB_WORKSPACE/included/action.yml"'
-    #  shell: bash
+    - run: 'cat ./template.yml > "$GITHUB_WORKSPACE/included/action.yml"'
+      shell: bash
     - run: echo $GITHUB_WORKSPACE
       shell: bash
 #     - run: 'cat ${{ inputs.workflow-steps }} >> "$GITHUB_WORKSPACE/included/action.yml"'
