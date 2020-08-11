@@ -10,7 +10,7 @@ outputs:
 runs:
   using: "composite"
   steps: 
-    - run: cat "name: 'Included workflow'\n\n        runs:\n          using: "composite"\n          steps:\n" > $GITHUB_WORKSPACE/included/action.yml
+    - run: 'cat "name: Included workflow\n\n        runs:\n          using: composite\n          steps:\n" > $GITHUB_WORKSPACE/included/action.yml'
       shell: bash
     - run: cat ${{ inputs.workflow-steps }} >> $GITHUB_WORKSPACE/included/action.yml
       shell: bash  
