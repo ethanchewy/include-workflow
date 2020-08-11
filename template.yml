@@ -1,5 +1,0 @@
-name: 'Included workflow'
-runs:
-  using: composite
-  steps:
-  
