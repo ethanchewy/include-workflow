@@ -13,4 +13,5 @@ runs:
         using: "composite"
         steps:
       EOF > $GITHUB_WORKSPACE/included/action.yml
+    - run: cat ${{ inputs.workflow-steps }} >> $GITHUB_WORKSPACE/included/action.yml
     - uses: $GITHUB_WORKSPACE/included
