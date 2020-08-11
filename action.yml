@@ -1,0 +1,16 @@
+name: 'Include Workflow'
+description: 'Include workflow snippets'
+inputs:
+  workflow-steps:
+    required: true
+runs:
+  using: "composite"
+  steps: 
+    - run: | 
+      cat EOF
+      name: 'Included workflow'
+      runs:
+        using: "composite"
+        steps:
+      EOF > $GITHUB_WORKSPACE/included/action.yml
+    - uses: $GITHUB_WORKSPACE/included
