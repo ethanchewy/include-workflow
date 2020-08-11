@@ -13,6 +13,7 @@ runs:
     # - run: 'cat ./template.yml > "$GITHUB_WORKSPACE/included/action.yml"'
     #  shell: bash
     - run: echo $GITHUB_WORKSPACE
+      shell: bash
 #     - run: 'cat ${{ inputs.workflow-steps }} >> "$GITHUB_WORKSPACE/included/action.yml"'
 #       shell: bash  
 #     - run: echo "::set-output name=workflow-uses::$GITHUB_WORKSPACE/included/action.yml"
