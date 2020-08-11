@@ -6,6 +6,8 @@ inputs:
 runs:
   using: "composite"
   steps: 
+    - run: pwd
+      shell: bash
     - run: 'cat ./template.yml > "$GITHUB_WORKSPACE/included/action.yml"'
       shell: bash
     - run: echo $GITHUB_WORKSPACE
