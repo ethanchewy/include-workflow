@@ -3,19 +3,16 @@ description: 'Include workflow snippets'
 inputs:
   workflow-steps:
     required: true
+outputs:
+  # temporary until this supports `uses
+  workflow-uses:
+    description: 'The temporary workflow to use'
 runs:
   using: "composite"
   steps: 
-    - run: pwd
+    - run: cat ./template.yml > "$GITHUB_WORKSPACE/included/action.yml"
       shell: bash
-    - run: |
-        mkdir "$GITHUB_WORKSPACE/included"
-        echo "name: 'Included workflow'" > "$GITHUB_WORKSPACE/included/action.yml"
-        echo "runs:" >> "$GITHUB_WORKSPACE/included/action.yml"
-        echo "  using: \"composite\"" >> "$GITHUB_WORKSPACE/included/action.yml"
-        echo "  steps:" >> "$GITHUB_WORKSPACE/included/action.yml"
-      shell: bash
-    - run: echo $GITHUB_WORKSPACE
-      shell: bash
-    - run: 'cat "${{ inputs.workflow-steps }}" >> "$GITHUB_WORKSPACE/included/action.yml"'
-      shell: bash
+    - run: cat ${{ inputs.workflow-steps }} >> "$GITHUB_WORKSPACE/included/action.yml"
+      shell: bash  
+    - run: echo "::set-output name=workflow-uses::$GITHUB_WORKSPACE/included/action.yml"
+      shell: bash 
